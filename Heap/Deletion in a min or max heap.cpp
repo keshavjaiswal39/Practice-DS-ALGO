@@ -86,7 +86,10 @@ class Heap {
 
 int main()
 {
-	Heap h;
+//	Heap h;
+
+// Lets try for a max heap
+	Heap h(10, false);
 	
 	int n;
 	cin>>n;
