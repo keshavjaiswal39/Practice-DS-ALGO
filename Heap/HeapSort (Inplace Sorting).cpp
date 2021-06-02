@@ -3,37 +3,29 @@ using namespace std;
 
 bool minHeap=false;
 
-bool compare(int a,int b)
+bool compare(int x,int y)
 {
 	if(minHeap)
 	{
-		return a<b;
+		return x<y;
 	}
-	return a>b;
-}
-
-void print(vector<int> v)
-{
-	for(int x:v)
-	{
-		cout<<x<<" ";
-	}
+	return x>y;
 }
 
 void Heapify(vector<int> &v,int idx,int size)
 {
-	int left=idx*2;
-	int right=left+1;
+	int left = idx*2;
+	int right = left+1;
 	
 	int last=size-1;
 	int min_idx=idx;
 	
-	if(left<=last and compare(v[left],v[idx]))
+	if(left<=last and compare(v[left], v[idx]))
 	{
 		min_idx=left;
 	}
 	
-	if(right<=last and compare(v[right],v[min_idx]))
+	if(right<=last and compare(v[right], v[min_idx]))
 	{
 		min_idx=right;
 	}
@@ -41,13 +33,15 @@ void Heapify(vector<int> &v,int idx,int size)
 	if(min_idx!=idx)
 	{
 		swap(v[idx],v[min_idx]);
+		
 		Heapify(v,min_idx,size-1);
 	}
+	
 }
 
-void buildHeapOptimized(vector<int> &v)
+void buildHeap(vector<int> v)
 {
-	for(int i=v.size()-1/2;i>=1;i--)
+	for(int i=v.size()-1/2; i>=1;i--)
 	{
 		Heapify(v,i,v.size());
 	}
@@ -55,7 +49,7 @@ void buildHeapOptimized(vector<int> &v)
 
 void HeapSort(vector<int> &v)
 {
-	buildHeapOptimized(v);
+	buildHeap(v);
 	int n=v.size();
 	
 	while(n>1)
@@ -67,14 +61,23 @@ void HeapSort(vector<int> &v)
 	}
 }
 
+void print(vector<int> v)
+{
+	for(int i=1; i<v.size();i++)
+	{
+		cout<<v[i]<<" ";
+	}
+}
+
 int main()
 {
 	int n;
 	cin>>n;
 	
 	vector<int> v;
+	v.push_back(-1);
 	
-	for(int i=0;i<n;i++)
+	for(int i=1;i<=n;i++)
 	{
 		int num;
 		cin>>num;
@@ -90,7 +93,3 @@ int main()
 	
 	
 }
-
-
-
-
