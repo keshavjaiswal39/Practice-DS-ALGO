@@ -38,7 +38,7 @@ class Graph{
 			q.push(src);
 			visited[src] = true;
 			
-			// pop out one node and visit its neighbour
+			// pop out one node and visit its neighbours
 			while(!q.empty())
 			{
 				int node = q.front();
@@ -46,7 +46,7 @@ class Graph{
 				
 				for(int nbr:l[node])
 				{
-					if(visited[nbr]==true and parent[node]!=nbr)
+					if(visited[nbr] == true and parent[node] != nbr)
 					{
 						return false;
 					}
